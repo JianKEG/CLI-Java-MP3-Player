@@ -19,6 +19,14 @@ public class SongList {
     public String formatDuration(String duration){
         int intDuration = Integer.parseInt(duration);
 
+        if(intDuration >= 3600){
+            int hrs =  intDuration / 3600;
+            int mins = (intDuration % 3600) / 60;
+            int secs = intDuration % 60;
+
+            return String.format("%d:%02d:%02d", hrs, mins, secs);
+        }
+
         int mins = intDuration/60;
         int secs = intDuration % 60;
 
@@ -169,6 +177,30 @@ public class SongList {
         }
 
         return count;
+    }
+
+    public static String totalDuration (SongList list){
+        int totalDur = 0;
+
+        Node currNode = list.head;
+
+        while(currNode != null){
+            totalDur += Integer.parseInt(currNode.duration);
+            currNode = currNode.next;
+        }
+
+        if(totalDur >= 3600){
+            int hrs =  totalDur / 3600;
+            int mins = (totalDur % 3600) / 60;
+            int secs = totalDur % 60;
+
+            return String.format("%d:%02d:%02d", hrs, mins, secs);
+        }
+
+        int mins = totalDur/60;
+        int secs = totalDur % 60;
+
+        return String.format("%d:%02d", mins, secs);
     }
 
     public static void printSongList(SongList list){
