@@ -109,12 +109,15 @@ public class songList{
     public static void search (songList list, String key){
         Node currNode = list.head;
         boolean found = false;
-        boolean loop = true;
+        boolean dontLoop = false;
 
         while(currNode != null){
             if (currNode.title.equalsIgnoreCase(key)) {
-                System.out.println("\nSearch by title: " + key);
-                System.out.println("\nSong found!");
+                if(!dontLoop) {
+                    System.out.println("\nSearch by title: " + key);
+                    System.out.println("\nSong found!");
+                    dontLoop = true;
+                }
 
                 System.out.println("Title    : " + currNode.title);
                 System.out.println("Artist   : " + currNode.artist);
@@ -124,10 +127,10 @@ public class songList{
             }
 
             if(currNode.artist.equalsIgnoreCase(key)){
-                if(loop) {
+                if(!dontLoop) {
                     System.out.println("\nSearch by artist: " + key);
                     System.out.println("\nSongs found by artists: ");
-                    loop = false;
+                    dontLoop = true;
                 }
 
                 System.out.println("\nTitle    : " + currNode.title);
@@ -137,10 +140,10 @@ public class songList{
             }
 
             if(currNode.album.equalsIgnoreCase(key)){
-                if(loop) {
+                if(!dontLoop) {
                     System.out.println("\nSearch by album: " + key);
                     System.out.println("\nSongs found by album: ");
-                    loop = false;
+                    dontLoop = true;
                 }
 
                 System.out.println("\nTitle    : " + currNode.title);
