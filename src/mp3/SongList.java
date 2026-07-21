@@ -26,7 +26,7 @@ public class SongList {
     }
 
     public static void insert(SongList list, String title, String artist, String duration, String album){
-        Node new_node = new Node(title, artist, list.formatDuration(duration), album);
+        Node new_node = new Node(title, artist, duration, album);
 
         if(list.head == null){
             list.head = new_node;
@@ -119,7 +119,7 @@ public class SongList {
 
                 System.out.println("Title    : " + currNode.title);
                 System.out.println("Artist   : " + currNode.artist);
-                System.out.println("Duration : " + currNode.duration);
+                System.out.println("Duration : " + list.formatDuration(currNode.duration));
 
                 found = true;
             }
@@ -133,7 +133,7 @@ public class SongList {
 
                 System.out.println("\nTitle    : " + currNode.title);
                 System.out.println("Artist   : " + currNode.artist);
-                System.out.println("Duration : " + currNode.duration);
+                System.out.println("Duration : " + list.formatDuration(currNode.duration));
                 found = true;
             }
 
@@ -146,7 +146,7 @@ public class SongList {
 
                 System.out.println("\nTitle    : " + currNode.title);
                 System.out.println("Artist   : " + currNode.artist);
-                System.out.println("Duration : " + currNode.duration);
+                System.out.println("Duration : " + list.formatDuration(currNode.duration));
                 found = true;
             }
 
@@ -159,6 +159,18 @@ public class SongList {
         }
     }
 
+    public static int countSongs (SongList list){
+        int count = 0;
+        Node currNode = list.head;
+
+        while(currNode != null){
+            count += 1;
+            currNode = currNode.next;
+        }
+
+        return count;
+    }
+
     public static void printSongList(SongList list){
         Node currNode = list.head;
         System.out.println("==================\n\tPLAYLIST\n==================");
@@ -166,7 +178,7 @@ public class SongList {
         while (currNode != null){
             System.out.println();
             System.out.println(i + ". " + currNode.title + " by " + currNode.artist + " ");
-            System.out.println("   " + currNode.duration);
+            System.out.println("   " + list.formatDuration(currNode.duration));
             currNode = currNode.next;
             i++;
         }
