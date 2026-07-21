@@ -1,0 +1,16 @@
+### Required Features:
+- [ ] Load Playlist
+    - [x] Load songs from a file.
+    - [x] Reconstruct the linked list.
+    - [x] Preserve playlist order.
+    - [ ] Start with an empty playlist if no file exists.
+    - [ ] Handle invalid or incomplete records gracefully.
+- [x] Add Song
+- [x] Display Playlist
+- [ ] Play Current Song
+- [ ] Navigate Playlist
+- [x] Search Song
+- [x] Remove Song
+- [ ] Display Playlist Information
+- [x] Save Playlist
+- [ ] Exit Program
