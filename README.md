@@ -13,7 +13,7 @@
 - [x] Remove Song
 - [ ] Display Playlist Information
     - [x] Total Songs
-    - [ ] Total Duration
+    - [x] Total Duration
     - [ ] First Song
     - [ ] Last Song
     - [ ] Current Song
