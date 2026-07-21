@@ -12,7 +12,7 @@
 - [x] Search Song
 - [x] Remove Song
 - [ ] Display Playlist Information
-    - [ ] Total Songs
+    - [x] Total Songs
     - [ ] Total Duration
     - [ ] First Song
     - [ ] Last Song
