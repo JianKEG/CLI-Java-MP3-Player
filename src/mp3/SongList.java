@@ -1,8 +1,6 @@
 package mp3;
 
-import java.io.*;
-
-public class songList{
+public class SongList {
     Node head;
 
     static class Node {
@@ -27,7 +25,7 @@ public class songList{
         return String.format("%d:%02d", mins, secs);
     }
 
-    public static void insert(songList list, String title, String artist, String duration, String album){
+    public static void insert(SongList list, String title, String artist, String duration, String album){
         Node new_node = new Node(title, artist, list.formatDuration(duration), album);
 
         if(list.head == null){
@@ -43,7 +41,7 @@ public class songList{
         }
     }
 
-    public static void deleteByKey(songList list, String key){
+    public static void deleteByKey(SongList list, String key){
         Node currNode = list.head, prev = null;
         boolean found = false;
 
@@ -75,7 +73,7 @@ public class songList{
         }
     }
 
-    public static void deleteById(songList list, int id) {
+    public static void deleteById(SongList list, int id) {
         if (list.head == null) {
             System.out.println("The list is empty.");
             return;
@@ -106,7 +104,7 @@ public class songList{
         System.out.println("Song '" + currNode.title + " by " + currNode.artist + "' deleted.");
     }
 
-    public static void search (songList list, String key){
+    public static void search (SongList list, String key){
         Node currNode = list.head;
         boolean found = false;
         boolean dontLoop = false;
@@ -161,7 +159,7 @@ public class songList{
         }
     }
 
-    public static void printSongList(songList list){
+    public static void printSongList(SongList list){
         Node currNode = list.head;
         System.out.println("==================\n\tPLAYLIST\n==================");
         int i = 1;
