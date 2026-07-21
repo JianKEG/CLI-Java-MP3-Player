@@ -12,5 +12,10 @@
 - [x] Search Song
 - [x] Remove Song
 - [ ] Display Playlist Information
+    - [ ] Total Songs
+    - [ ] Total Duration
+    - [ ] First Song
+    - [ ] Last Song
+    - [ ] Current Song
 - [x] Save Playlist
 - [ ] Exit Program
