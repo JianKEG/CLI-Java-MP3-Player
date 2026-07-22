@@ -118,6 +118,7 @@ public class Main {
                     scanner.nextLine();
  
                     if (removeChoice == 1) {
+                        SongList.printSongList(list);
                         System.out.print("Enter song number to delete: ");
                         while (!scanner.hasNextInt()) {
                             System.out.println("Invalid input. Please enter a valid song number.");
@@ -129,6 +130,7 @@ public class Main {
  
                         SongList.deleteById(list, id);
                     } else if (removeChoice == 2) {
+                        SongList.printSongList(list);
                         System.out.print("Enter title, artist, or album to delete: ");
                         String key = scanner.nextLine().trim();
                         SongList.deleteByKey(list, key);
