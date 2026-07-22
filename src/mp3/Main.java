@@ -11,7 +11,10 @@ public class Main {
     public static void main(String[] args) {
         SongList list = new SongList();
         Scanner scanner = new Scanner(System.in);
- 
+
+        System.out.println("================================");
+        System.out.println("\tSPOTIFEE PLAYER");
+        System.out.println("================================");
         FileHandler.loadPlaylist(list);
  
         int choice;
@@ -135,8 +138,49 @@ public class Main {
                     break;
                 //Playlist information
                 case 8:
-                    System.out.println("Total songs: " + SongList.countSongs(list));
-                    System.out.println("Total duration: " + SongList.totalDuration(list));
+                    boolean inPlaylistInfoMenu = true;
+
+                    while (inPlaylistInfoMenu) {
+                        System.out.println("\n================================");
+                        System.out.println("\tPLAYLIST INFORMATION");
+                        System.out.println("================================");
+                        System.out.println("1. Total Number of Songs");
+                        System.out.println("2. Total Playlist Duration");
+                        System.out.println("3. First Song");
+                        System.out.println("4. Last Song");
+                        System.out.println("5. Currently Selected Song");
+                        System.out.println("0. Back to Main Menu");
+                        System.out.print("Enter your choice: ");
+
+                        int playlistInfoChoice = scanner.nextInt();
+
+                        switch (playlistInfoChoice) {
+                            case 1:
+                                System.out.println("\nTotal songs: " + SongList.countSongs(list));
+                                break;
+                            case 2:
+                                System.out.println("\nTotal duration: " + SongList.totalDuration(list));
+                                break;
+                            case 3:
+                                System.out.println();
+                                SongList.printFirstSong(list);
+                                break;
+                            case 4:
+                                System.out.println();
+                                SongList.printLastSong(list);
+                                break;
+                            case 5:
+                                System.out.println();
+                                SongList.selectCurrentSong(list);
+                                break;
+                            case 0:
+                                inPlaylistInfoMenu = false;
+                                break;
+                            default:
+                                System.out.println("\nInvalid choice. Please try again.");
+                                break;
+                        }
+                    }
                     break;
 
                 case 9:
