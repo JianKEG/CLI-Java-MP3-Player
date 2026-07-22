@@ -3,8 +3,8 @@ package mp3;
 import java.io.*;
 
 public class FileHandler {
-    public static void savePlaylist(SongList list, String filename){
-        try(FileWriter writer = new FileWriter(filename)){
+    public static void savePlaylist(SongList list){
+        try(FileWriter writer = new FileWriter("playlist.txt")){
             SongList.Node currNode = list.head;
 
             System.out.println("Saving playlist...");
@@ -21,8 +21,19 @@ public class FileHandler {
         }
     }
 
-    public static void loadPlaylist(SongList list, String filename){
-        try(FileReader fr = new FileReader(filename); BufferedReader br = new BufferedReader(fr)){
+    public static void loadPlaylist(SongList list){
+        System.out.println("Loading playlist...");
+
+        File file = new File("playlist.txt");
+
+        if(!file.exists()){
+            System.out.println("Playlist not found!");
+            System.out.println("A new empty playlist has been created.");
+            return;
+        }
+
+
+        try(FileReader fr = new FileReader("playlist.txt"); BufferedReader br = new BufferedReader(fr)){
             String line;
 
             System.out.println("Loading playlist...");
@@ -30,7 +41,9 @@ public class FileHandler {
             while ((line = br.readLine()) != null){
                 String[] data = line.split("\\|");
 
-                SongList.insert(list, data[0], data[1], data[2], data[3]);
+                if(data.length == 4) {
+                    SongList.insert(list, data[0], data[1], data[2], data[3]);
+                }
             }
 
             System.out.println("Playlist successfully loaded.");
