@@ -138,7 +138,7 @@ public class Main {
                     System.out.println("Total songs: " + SongList.countSongs(list));
                     System.out.println("Total duration: " + SongList.totalDuration(list));
                     break;
-                //Saving Playlist
+
                 case 9:
                     FileHandler.savePlaylist(list);
                     break;
