@@ -45,12 +45,13 @@ public class SongList {
             list.tail = new_node;
         }else{
             list.tail.next = new_node;
+            new_node.prev = list.tail;
             list.tail = new_node;
         }
     }
 
     public static void deleteByKey(SongList list, String key){
-        Node currNode = list.head, prev = null;
+        Node currNode = list.head;
         boolean found = false;
 
         if (list.head == null) {
@@ -60,21 +61,22 @@ public class SongList {
 
         while (currNode != null) {
             if (currNode.artist.equalsIgnoreCase(key) || currNode.title.equalsIgnoreCase(key) || currNode.album.equalsIgnoreCase(key)) {
-                if (prev == null) {
+                if (currNode.prev == null) {
                     list.head = currNode.next;
                 } else {
-                    prev.next = currNode.next;
+                    currNode.prev.next = currNode.next;
                 }
 
                 if (currNode.next == null){
-                    list.tail = prev;
+                    list.tail = currNode.prev;
+                } else {
+                    currNode.next.prev = currNode.prev;
                 }
 
                 found = true;
 
-            } else {
-                prev = currNode;
             }
+
             currNode = currNode.next;
         }
 
@@ -95,7 +97,9 @@ public class SongList {
             System.out.println("Song '" + list.head.title + "' deleted.");
             list.head = list.head.next;
 
-            if (list.head == null){
+            if (list.head != null){
+                list.head.prev = null;
+            } else {
                 list.tail = null;
             }
 
@@ -103,11 +107,9 @@ public class SongList {
         }
 
         Node currNode = list.head;
-        Node prev = null;
         int currentId = 1;
 
         while (currNode != null && currentId < id) {
-            prev = currNode;
             currNode = currNode.next;
             currentId++;
         }
@@ -117,11 +119,14 @@ public class SongList {
             return;
         }
 
-        prev.next = currNode.next;
         System.out.println("Song '" + currNode.title + " by " + currNode.artist + "' deleted.");
 
-        if (currNode.next == null){
-            list.tail = prev;
+        currNode.prev.next = currNode.next;
+
+        if(currNode.next != null){
+            currNode.next.prev = currNode.prev;
+        } else {
+            list.tail = currNode.prev;
         }
     }
 
