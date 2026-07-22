@@ -298,6 +298,7 @@ public class SongList {
         if(list.currentSong == null){
             list.currentSong = list.head;
             System.out.println("Current song: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
+            return;
         }
 
         System.out.println("Current song: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
