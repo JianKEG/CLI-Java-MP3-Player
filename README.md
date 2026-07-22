@@ -14,8 +14,8 @@
 - [ ] Display Playlist Information
     - [x] Total Songs
     - [x] Total Duration
-    - [ ] First Song
-    - [ ] Last Song
+    - [x] First Song
+    - [x] Last Song
     - [ ] Current Song
 - [x] Save Playlist
 - [ ] Exit Program
