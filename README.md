@@ -13,9 +13,9 @@
 - [x] Remove Song
 - [ ] Display Playlist Information
     - [x] Total Songs
-    - [ ] Total Duration
-    - [ ] First Song
-    - [ ] Last Song
+    - [x] Total Duration
+    - [x] First Song
+    - [x] Last Song
     - [ ] Current Song
 - [x] Save Playlist
 - [ ] Exit Program
