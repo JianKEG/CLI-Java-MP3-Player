@@ -7,15 +7,15 @@
     - [x] Handle invalid or incomplete records gracefully.
 - [x] Add Song
 - [x] Display Playlist
-- [ ] Play Current Song
-- [ ] Navigate Playlist
+- [x] Play Current Song
+- [x] Navigate Playlist
 - [x] Search Song
 - [x] Remove Song
-- [ ] Display Playlist Information
+- [x] Display Playlist Information
     - [x] Total Songs
     - [x] Total Duration
     - [x] First Song
     - [x] Last Song
-    - [ ] Current Song
+    - [x] Current Song
 - [x] Save Playlist
 - [ ] Exit Program
