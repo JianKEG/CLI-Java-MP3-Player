@@ -3,10 +3,12 @@ package mp3;
 public class SongList {
     Node head;
     Node tail;
+    Node currentSong;
 
     static class Node {
         String title, artist, duration, album;
         Node next;
+        Node prev;
 
         Node(String t,String a,String d, String ab) {
             title = t;
@@ -14,6 +16,7 @@ public class SongList {
             duration = d;
             album = ab;
             next = null;
+            prev = null;
         }
     }
 
@@ -229,16 +232,84 @@ public class SongList {
     public static void printFirstSong(SongList list){
         if(list.head == null){
             System.out.println("The playlist is empty");
-        }else{
-            System.out.println("First Song: " + list.head.title + " by " + list.head.artist + " [" + list.formatDuration(list.head.duration)+"]");
+            return;
         }
+
+        System.out.println("First Song: " + list.head.title + " by " + list.head.artist + " [" + list.formatDuration(list.head.duration)+"]");
     }
 
     public static void printLastSong(SongList list){
         if(list.tail == null){
             System.out.println("The playlist is empty");
-        }else{
-            System.out.println("Last Song: " + list.tail.title + " by " + list.tail.artist + " [" + list.formatDuration(list.tail.duration)+"]");
+            return;
         }
+
+        System.out.println("Last Song: " + list.tail.title + " by " + list.tail.artist + " [" + list.formatDuration(list.tail.duration)+"]");
+    }
+
+    public static void nextSong(SongList list){
+        if(list.head == null){
+            System.out.println("The playlist is empty.");
+            return;
+        }
+
+        if(list.currentSong == null){
+            list.currentSong = list.head;
+            System.out.println("Selected: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
+            return;
+        }
+
+        if(list.currentSong.next != null){
+            list.currentSong = list.currentSong.next;
+            System.out.println("[NEXT] Skipping song...");
+            System.out.println("\nSelected: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
+        }else{
+            System.out.println("You are now already at the end of the playlist.");
+        }
+    }
+
+    public static void prevSong(SongList list){
+        if(list.head == null){
+            System.out.println("The playlist is empty.");
+            return;
+        }
+
+        if(list.currentSong.prev == null){
+            System.out.println("You are now already at the beginning of the playlist.");
+            return;
+        }
+
+        list.currentSong = list.currentSong.prev;
+        System.out.println("[PREV] Skipping song...");
+        System.out.println("\nSelected: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
+    }
+
+    public static void selectCurrentSong(SongList list){
+        if (list.head == null){
+            System.out.println("The playlist is empty.");
+            return;
+        }
+
+        if(list.currentSong == null){
+            list.currentSong = list.head;
+            System.out.println("Current song: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
+        }
+
+        System.out.println("Current song: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
+    }
+
+    public static void playCurrentSong(SongList list){
+        if (list.head == null){
+            System.out.println("The playlist is empty.");
+            return;
+        }
+
+        if(list.currentSong == null){
+            list.currentSong = list.head;
+            System.out.println("Now playing: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
+            return;
+        }
+
+        System.out.println("Now playing: " + list.currentSong.title + " by " + list.currentSong.artist + " [" + list.formatDuration(list.currentSong.duration) + "]");
     }
 }
