@@ -36,8 +36,6 @@ public class FileHandler {
         try(FileReader fr = new FileReader("playlist.txt"); BufferedReader br = new BufferedReader(fr)){
             String line;
 
-            System.out.println("Loading playlist...");
-
             while ((line = br.readLine()) != null){
                 String[] data = line.split("\\|");
 
