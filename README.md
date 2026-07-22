@@ -19,3 +19,5 @@
     - [x] Current Song
 - [x] Save Playlist
 - [x] Exit Program
+
+<img width="498" height="401" alt="image" src="https://github.com/user-attachments/assets/8bfb41c0-4c1a-40d0-b4dd-ff11e1b937d9" />
