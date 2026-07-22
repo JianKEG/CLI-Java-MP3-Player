@@ -281,3 +281,44 @@ Instantiate the playlist first inside main;
        Call this once when exiting or terminating the program.
 ============================================================================================================================================
  */
+
+
+/*
+============================
+        DOCUMENTATION
+============================
+
+--------------------------------------
+1. Selected Linked-list implementation
+--------------------------------------
+    We decided to implement a Doubly Linked-list to manage the playlist. Where each node contains
+        - next pointer which holds the address of the next song in the list, and
+        - prev pointer which holds the address of the previous song in the list,
+        - head tracker which tracks the first song in the list
+        - tail tracker which tracks the last song in the list, and
+        - currentSong tracker which tracks whatever song is currently reading/playing
+
+    This is chosen because we achieved a much more efficient time complexity than our initial Singly Linked List.
+        - O(1) Navigation by holding the address of the neighboring songs in the playlist from next and prev pointers
+        - O(1) Insertion by keeping track of the tail or the end of the song, so we don't have to loop the entire playlist
+          to search for the last song (which was our initial method)
+
+--------------------------------------
+2. File Format Used
+--------------------------------------
+    For saving and loading, we used a simple txt file (playlist.txt). where each line is a single song detail and used
+    "|" a pipe character as our delimiters (for example: title|artist|duration|album).
+
+    When loading the playlist, our FileHandler reads each line and splits the attributes with string.split("\\|") and temporarily
+    store the song attributes in a String[] Array. We implemented a lenght validation where if(data.lenght == 4) before inserting
+    the data into our Linked List. This will make sure that our program will not crash with an Index Out of Bounds error.
+
+--------------------------------------
+3. General Program Design
+--------------------------------------
+    To keep our source code organized and clean we separated our code into 3 modular classes.
+    - Main.java handles the user menus and input validation,
+    - Songlist.java manages the linked-list operations/data structure,
+    - FileHandler.java handles reading and writing playlist data into a text file, by using Java's FileReader and FileWriter.
+    This ensures that UI, File handling, and backend logic are handled independently
+ */
