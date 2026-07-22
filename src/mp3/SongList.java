@@ -2,6 +2,7 @@ package mp3;
 
 public class SongList {
     Node head;
+    Node tail;
 
     static class Node {
         String title, artist, duration, album;
@@ -38,14 +39,10 @@ public class SongList {
 
         if(list.head == null){
             list.head = new_node;
+            list.tail = new_node;
         }else{
-            Node last = list.head;
-
-            while(last.next != null){
-                last = last.next;
-            }
-
-            last.next = new_node;
+            list.tail.next = new_node;
+            list.tail = new_node;
         }
     }
 
@@ -54,7 +51,7 @@ public class SongList {
         boolean found = false;
 
         if (list.head == null) {
-            System.out.println("The list is empty.");
+            System.out.println("The Playlist is empty.");
             return;
         }
 
@@ -64,6 +61,10 @@ public class SongList {
                     list.head = currNode.next;
                 } else {
                     prev.next = currNode.next;
+                }
+
+                if (currNode.next == null){
+                    list.tail = prev;
                 }
 
                 found = true;
@@ -90,6 +91,11 @@ public class SongList {
         if (id == 1) {
             System.out.println("Song '" + list.head.title + "' deleted.");
             list.head = list.head.next;
+
+            if (list.head == null){
+                list.tail = null;
+            }
+
             return;
         }
 
@@ -110,6 +116,10 @@ public class SongList {
 
         prev.next = currNode.next;
         System.out.println("Song '" + currNode.title + " by " + currNode.artist + "' deleted.");
+
+        if (currNode.next == null){
+            list.tail = prev;
+        }
     }
 
     public static void search (SongList list, String key){
@@ -213,6 +223,22 @@ public class SongList {
             System.out.println("   " + list.formatDuration(currNode.duration));
             currNode = currNode.next;
             i++;
+        }
+    }
+
+    public static void printFirstSong(SongList list){
+        if(list.head == null){
+            System.out.println("The playlist is empty");
+        }else{
+            System.out.println("First Song: " + list.head.title + " by " + list.head.artist + " [" + list.formatDuration(list.head.duration)+"]");
+        }
+    }
+
+    public static void printLastSong(SongList list){
+        if(list.tail == null){
+            System.out.println("The playlist is empty");
+        }else{
+            System.out.println("Last Song: " + list.tail.title + " by " + list.tail.artist + " [" + list.formatDuration(list.tail.duration)+"]");
         }
     }
 }
