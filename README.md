@@ -18,4 +18,4 @@
     - [x] Last Song
     - [x] Current Song
 - [x] Save Playlist
-- [ ] Exit Program
+- [x] Exit Program
