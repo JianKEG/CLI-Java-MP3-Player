@@ -19,7 +19,7 @@ public class Main {
         do {
             
             System.out.println("================================");
-            System.out.println("        SPOTIFEE PLAYER");
+            System.out.println("\tSPOTIFEE PLAYER");
             System.out.println("================================");
             System.out.println("1. Add Song");
             System.out.println("2. Display Playlist");
